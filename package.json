@@ -13,6 +13,7 @@
   "dependencies": {
     "bull": "*",
     "bull-board": "*",
+    "dotenv": "^8.2.0",
     "express": "*"
   },
   "devDependencies": {

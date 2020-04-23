@@ -3,7 +3,19 @@
 
 const cluster = require('cluster')
 const { UI, setQueues } = require('bull-board')
-const queue = require('bull')('Message Clients')
+require('dotenv').config()
+
+const config = {
+	redis: {
+		port: process.env.redis_port || 6379,
+		host: process.env.redis_host || '127.0.0.1',
+		password: process.env.redis_password ||null
+	}
+}
+
+
+const queue = require('bull')('Message Clients', config);
+
 const processClient = require('./src/Client')
 
 const app = require('express')()
